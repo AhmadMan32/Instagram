@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/"
+title = "Insta Bildirim Arşivi"
+description = "Yalnızca kullanıcının Android cihazında gösterilen Instagram bildirim önizlemelerini, kullanıcının açık izniyle yerel olarak kaydeden özel bir arşiv uygulaması. Bildirim metnini, zamanını ve görünür hesap bilgisini arar; sohbet geçmişini veya kaynak medya dosyalarını Instagram'dan çekmez."
+version = "1.0.0"
+id = "artifacts/instagram-notification-archive"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/" ]
+localPort = 22210
+
+[services.development]
+run = "pnpm --filter @workspace/instagram-notification-archive run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/instagram-notification-archive", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/instagram-notification-archive", "run", "serve" ]
+
+[services.env]
+PORT = "22210"
+BASE_PATH = "/"
